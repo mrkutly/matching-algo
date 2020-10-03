@@ -1,12 +1,13 @@
 {
   "name": "solution",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/start.js",
   "license": "MIT",
   "scripts": {
+    "app": "npm run build && npm run start",
+    "start": "node dist/start.js",
     "build": "tsc",
     "dev": "tsc-watch --onSuccess \"node dist/start.js\"",
-    "start": "node dist/start.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"

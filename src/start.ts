@@ -1,9 +1,14 @@
 import app from './lib/app';
 
-try {
-	app();
-} catch (e) {
-	console.error(e);
-} finally {
-	process.exit(0);
+async function run() {
+	console.log("============ Top Respondents ============");
+	try {
+		await app();
+	} catch (e) {
+		console.error(e);
+	} finally {
+		process.exit(0);
+	}
 }
+
+run();
