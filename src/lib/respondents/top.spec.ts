@@ -1,8 +1,8 @@
-import { calculateTopRespondents } from './top';
-import * as factory from '../utils/factory';
+import { calculateTopRespondents } from "./top";
+import * as factory from "../utils/factory";
 
-describe('calculateTopRespondents function', () => {
-	test('adds a top respondent if they rank higher than another', () => {
+describe("calculateTopRespondents function", () => {
+	test("adds a top respondent if they rank higher than another", () => {
 		const top = factory.arrayFrom(factory.respondent, 5, { score: 10 });
 		const project = factory.project({ numberOfParticipants: 5 });
 		const respondent = factory.respondent({ score: 11 });
@@ -10,7 +10,7 @@ describe('calculateTopRespondents function', () => {
 		expect(nextTop).toContainEqual(respondent);
 	});
 
-	test('does not add a top respondent if they rank lower than the rest', () => {
+	test("does not add a top respondent if they rank lower than the rest", () => {
 		const top = factory.arrayFrom(factory.respondent, 5, { score: 10 });
 		const project = factory.project({ numberOfParticipants: 5 });
 		const respondent = factory.respondent({ score: 9 });
@@ -18,11 +18,11 @@ describe('calculateTopRespondents function', () => {
 		expect(nextTop).not.toContainEqual(respondent);
 	});
 
-	test('removes the lowest scoring respondent when adding a new one', () => {
+	test("removes the lowest scoring respondent when adding a new one", () => {
 		const lowest = factory.respondent({ score: 8 });
 		const top = [
 			...factory.arrayFrom(factory.respondent, 4, { score: 10 }),
-			lowest
+			lowest,
 		];
 		const project = factory.project({ numberOfParticipants: 5 });
 		const respondent = factory.respondent({ score: 9 });

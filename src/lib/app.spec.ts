@@ -1,7 +1,7 @@
-import app from './app';
+import app from "./app";
 
-describe('app entry point', () => {
-	test('starts without crashing', async () => {
+describe("app entry point", () => {
+	test("starts without crashing", async () => {
 		let err;
 		try {
 			await app();

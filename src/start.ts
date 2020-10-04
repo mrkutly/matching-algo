@@ -1,4 +1,4 @@
-import app from './lib/app';
+import app from "./lib/app";
 
 async function run() {
 	console.log("============ Top Respondents ============");

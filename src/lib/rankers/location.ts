@@ -1,4 +1,4 @@
-import { Respondent } from '../types';
+import { Respondent } from "../types";
 
 // finds the closest city and returns its distance as a score. If nothing is in range, returns 0.
 export const rankLocation = (respondent: Respondent) => {

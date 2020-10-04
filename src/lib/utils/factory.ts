@@ -1,8 +1,12 @@
 /* istanbul ignore file */
-import faker from 'faker';
-import { City, Project, Respondent } from '../types';
+import faker from "faker";
+import { City, Project, Respondent } from "../types";
 
-export const arrayFrom = <T>(factoryFunc: (x: any) => T, length: number, opts: any = {}) => {
+export const arrayFrom = <T>(
+	factoryFunc: (x: any) => T,
+	length: number,
+	opts: any = {}
+) => {
 	const array = [];
 	while (array.length < length) {
 		array.push(factoryFunc(opts));
@@ -25,13 +29,12 @@ export const respondent = (opts: any = {}): Respondent => ({
 	...opts,
 });
 
-
 export const city = (opts: any = {}): City => {
 	const _city = faker.address.city();
 	const state = faker.address.state();
 	const country = faker.address.country();
 
-	return ({
+	return {
 		location: {
 			id: faker.random.alpha({ count: 12 }),
 			city: _city,
@@ -42,9 +45,9 @@ export const city = (opts: any = {}): City => {
 				latitude: Number(faker.address.latitude()),
 				longitude: Number(faker.address.longitude()),
 			},
-			...opts
-		}
-	});
+			...opts,
+		},
+	};
 };
 
 export const project = (opts: any = {}): Project => ({
@@ -57,7 +60,13 @@ export const project = (opts: any = {}): Project => ({
 	name: faker.company.bsBuzz(),
 	professionalJobTitles: arrayFrom(faker.name.jobTitle, 8),
 	professionalIndustry: arrayFrom(faker.company.bsBuzz, 5),
-	education: faker.random.arrayElements(["High School", "Bachelors", "Masters", "Doctorate", "PhD"]),
+	education: faker.random.arrayElements([
+		"High School",
+		"Bachelors",
+		"Masters",
+		"Doctorate",
+		"PhD",
+	]),
 	...opts,
 });
 
@@ -70,7 +79,7 @@ export const NYC = () => ({
 		formattedAddress: "New York, NY, USA",
 		location: {
 			latitude: 40.7127753,
-			longitude: -74.0059728
-		}
-	}
+			longitude: -74.0059728,
+		},
+	},
 });

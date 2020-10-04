@@ -1,10 +1,9 @@
-import { rankLocation } from '../rankers/location';
-import { rankIndustry } from '../rankers/industry';
-import { rankJobTitle } from '../rankers/jobTitle';
-import { distance, Location } from '../utils/distance';
-import { City, GeoLocation, Project, Respondent } from '../types';
-import { sortDescBy } from '../utils/array';
-
+import { rankLocation } from "../rankers/location";
+import { rankIndustry } from "../rankers/industry";
+import { rankJobTitle } from "../rankers/jobTitle";
+import { distance, Location } from "../utils/distance";
+import { City, GeoLocation, Project, Respondent } from "../types";
+import { sortDescBy } from "../utils/array";
 
 const sortDescByName = sortDescBy((r: Respondent) => r.firstName.length);
 
@@ -19,7 +18,7 @@ export const shortestDistance = (location: GeoLocation, cities: City[]) => {
 	}, Infinity);
 };
 
-/** 
+/**
  * Calculates the respondent's match score for a project
  */
 export const getScore = (respondent: Respondent, project: Project) => {
@@ -29,7 +28,6 @@ export const getScore = (respondent: Respondent, project: Project) => {
 
 	return industryScore + jobTitleScore + locationScore;
 };
-
 
 /**
  * Takes a row from the csv and a project and returns a Respondent struct with score and distance calculated.
@@ -44,7 +42,7 @@ export const RespondentMatch = (
 		firstName,
 		gender,
 		jobTitle,
-		industry: industry.split(','),
+		industry: industry.split(","),
 		city,
 		location,
 		distance,
@@ -54,7 +52,7 @@ export const RespondentMatch = (
 
 	return {
 		...resp,
-		score
+		score,
 	};
 };
 
@@ -64,6 +62,10 @@ export const RespondentMatch = (
 export const printRespondents = (respondents: Respondent[]) => {
 	const nameLength = sortDescByName(respondents)[0].firstName.length;
 	respondents.forEach((resp, idx) => {
-		console.log(`${idx + 1}. ${resp.firstName.padEnd(nameLength, " ")} | ${resp.distance}km away | ${resp.score} matching score`);
+		console.log(
+			`${idx + 1}. ${resp.firstName.padEnd(nameLength, " ")} | ${
+				resp.distance
+			}km away | ${resp.score} matching score`
+		);
 	});
 };
