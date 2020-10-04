@@ -1,6 +1,10 @@
 {
-	"name": "solution",
+	"name": "matching-algo",
 	"version": "1.0.0",
+	"description": "matching algorithm for ranking respondents for a given project",
+	"repository": {
+		"url": "https://github.com/mrkutly/matching-algo/"
+	},
 	"main": "dist/start.js",
 	"license": "MIT",
 	"scripts": {
